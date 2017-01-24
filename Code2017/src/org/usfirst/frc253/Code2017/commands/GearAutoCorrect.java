@@ -80,10 +80,10 @@ public class GearAutoCorrect extends Command {
         	    	Robot.drivetraintank.setRight(.6);
         	    	Robot.drivetraintank.setRight_Back(.6);
     			} else if (myTimer.get() < 2){
-    				Robot.drivetraintank.setLeft_Back(1);
-        	    	Robot.drivetraintank.setLeft(1);
-        	    	Robot.drivetraintank.setRight(.5);
-        	    	Robot.drivetraintank.setRight_Back(.5);
+    				Robot.drivetraintank.setLeft_Back(-1);
+        	    	Robot.drivetraintank.setLeft(-1);
+        	    	Robot.drivetraintank.setRight(-.5);
+        	    	Robot.drivetraintank.setRight_Back(-.5);
     			}
     			myTimer.stop();
     		}
