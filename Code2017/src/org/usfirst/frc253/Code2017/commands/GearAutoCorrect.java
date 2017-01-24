@@ -13,6 +13,10 @@ package org.usfirst.frc253.Code2017.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Timer;
+
+import org.usfirst.frc253.Code2017.Robot;
+
 import edu.wpi.first.wpilibj.Ultrasonic;
 /**
  *
@@ -23,6 +27,8 @@ public class GearAutoCorrect extends Command {
 	Ultrasonic ultra2;
 
     public GearAutoCorrect() {
+    	
+    	requires(Robot.drivetraintank);
 
     	//copied from org.usfirst.frc253.Code2016.commands.UltraSound2
     	ultra1 = new Ultrasonic(3,2); //arbitrary arguments for now
@@ -44,14 +50,42 @@ public class GearAutoCorrect extends Command {
     	boolean isAligned = false;
     	SmartDashboard.putBoolean("Is the gear aligned?", isAligned);
     	
-    	if(range1 == range2){
+    	if(Math.abs(range1 - range2) < 3.0){
     		isAligned = true;
-    	} else if(range1 != range2){
+    	} else {
     		isAligned = false;
     		if(range1 > range2){
-    			//code to back up and turn right
+    			Timer myTimer = new Timer();
+    			myTimer.reset();
+    			myTimer.start();
+    			if(myTimer.get() < 1){
+    				Robot.drivetraintank.setLeft_Back(.5);
+        	    	Robot.drivetraintank.setLeft(.5);
+        	    	Robot.drivetraintank.setRight(.6);
+        	    	Robot.drivetraintank.setRight_Back(.6);
+    			} else if (myTimer.get() < 2){
+    				Robot.drivetraintank.setLeft_Back(-.5);
+        	    	Robot.drivetraintank.setLeft(-.5);
+        	    	Robot.drivetraintank.setRight(-1);
+        	    	Robot.drivetraintank.setRight_Back(-1);
+    			}
+    			myTimer.stop();
     		} else if(range1 < range2){
-    			//code to back up and turn left
+    			Timer myTimer = new Timer();
+    			myTimer.reset();
+    			myTimer.start();
+    			if(myTimer.get() < 1){
+    				Robot.drivetraintank.setLeft_Back(.5);
+        	    	Robot.drivetraintank.setLeft(.5);
+        	    	Robot.drivetraintank.setRight(.6);
+        	    	Robot.drivetraintank.setRight_Back(.6);
+    			} else if (myTimer.get() < 2){
+    				Robot.drivetraintank.setLeft_Back(1);
+        	    	Robot.drivetraintank.setLeft(1);
+        	    	Robot.drivetraintank.setRight(.5);
+        	    	Robot.drivetraintank.setRight_Back(.5);
+    			}
+    			myTimer.stop();
     		}
     	}
     }
@@ -63,6 +97,10 @@ public class GearAutoCorrect extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drivetraintank.setLeft_Back(0);
+    	Robot.drivetraintank.setLeft(0);
+    	Robot.drivetraintank.setRight(0);
+    	Robot.drivetraintank.setRight_Back(0);
     }
 
     // Called when another command which requires one or more of the same
