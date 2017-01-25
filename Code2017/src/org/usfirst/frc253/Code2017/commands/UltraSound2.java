@@ -10,33 +10,22 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.AxisCamera;
 
 /**
- *1/23/17
+ *
  */
-public class ShooterAutoCorrect extends Command {
+public class UltraSound2 extends Command {
 	
 	Ultrasonic ultra1;
-	Ultrasonic ultra2;
-	Ultrasonic ultra3;
-	Ultrasonic ultra4;
     int session;
     Image frame;
-    AxisCamera camera; //note: supposed to be USB camera, not Axis
-    public ShooterAutoCorrect() {
+    AxisCamera camera;
+    public UltraSound2() {
     	
-    	ultra1 = new Ultrasonic(7,6);
-    	ultra2 = new Ultrasonic(9,8);
-    	ultra3 = new Ultrasonic(11,10);
-    	ultra4 = new Ultrasonic(13,12);
+    	ultra1 = new Ultrasonic(0,1);
     	ultra1.setAutomaticMode(true);
-    	ultra2.setAutomaticMode(true);
-    	ultra3.setAutomaticMode(true);
-    	ultra4.setAutomaticMode(true);
-    	
     	// turns on automatic mode
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -48,11 +37,18 @@ public class ShooterAutoCorrect extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
-    	double range1 = ultra1.getRangeInches();
-    	double range2 = ultra2.getRangeInches();
-    	double range3 = ultra3.getRangeInches();
-    	double range4 = ultra4.getRangeInches();
+    	
+     		//accelerationX = accel.getX();
+     		//accelerationY = accel.getY();
+     		//accelerationZ = accel.getZ();
+     		 double range1 = ultra1.getRangeInches();
+     		//String stringTEST = ultra.getSmartDashboardType();
+     		
+         //System.out.println(accelerationX + " " + accelerationY + " " + accelerationZ + ".");
+ 		//SmartDashboard.putNumber("Accelometer X", accel.getX());
+ 		//SmartDashboard.putNumber("Accelometer Y", accel.getY());
+ 		//SmartDashboard.putNumber("Accelometer Z", accel.getZ());
+ 		SmartDashboard.putNumber("Ultrasonic", range1);
  		  
     }
 
