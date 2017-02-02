@@ -71,8 +71,8 @@ public class OI {
         rightJoystick = new Joystick(1);
         leftJoystick = new Joystick(0);
         
-        Ultrasonic1 = new JoystickButton(rightJoystick, 11);
-        Ultrasonic1.whenPressed(new Ultrasonic1());
+//        Ultrasonic1 = new JoystickButton(rightJoystick, 11);
+//        Ultrasonic1.whenPressed(new Ultrasonic1());
 
         StraightDrive = new JoystickButton(leftJoystick, 6);
         StraightDrive.whileHeld(new StraightDrive());
@@ -83,14 +83,14 @@ public class OI {
         DeployGear = new JoystickButton(leftJoystick, 1);
         DeployGear.whileHeld(new DeployGear());
         
-        Retract = new JoystickButton(leftJoystick, 2); //reassign button value later
+        Retract = new JoystickButton(rightJoystick, 2); //reassign button value later
         Retract.whileHeld(new Retract());
         
         GearAutoCorrect = new JoystickButton(leftJoystick, 2);
         GearAutoCorrect.whileHeld(new GearAutoCorrect());
         
-        ShooterAutoCorrect = new JoystickButton(rightJoystick, 2);
-        ShooterAutoCorrect.whileHeld(new ShooterAutoCorrect());
+//        ShooterAutoCorrect = new JoystickButton(rightJoystick, 2);
+//        ShooterAutoCorrect.whileHeld(new ShooterAutoCorrect());
         
         // SmartDashboard Buttons
 

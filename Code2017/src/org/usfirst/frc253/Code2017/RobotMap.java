@@ -86,44 +86,44 @@ public class RobotMap {
         // BallPickUpSystemTalon = new Talon(6);
         
         //Motors for robot components 2017
-        gearFlipSpark1 = new Spark(0);
+        gearFlipSpark1 = new Spark(4);
         LiveWindow.addActuator("GearFlip", "Spark 1", (Spark) gearFlipSpark1);
-        gearFlipUltra1 = new Ultrasonic(0,1);
-        LiveWindow.addSensor("Ultra1", "Ultrasonic 1", gearFlipUltra1);
-        gearFlipUltra2 = new Ultrasonic(0,1);
-        LiveWindow.addSensor("Ultra2", "Ultrasonic 2", gearFlipUltra2);
-        gearFlipAnalogGyro1 = new AnalogGyro(0);
-        LiveWindow.addSensor("Gyroscope", "AnalogGyro 1", gearFlipAnalogGyro1);
-        gearFlipAnalogGyro1.setSensitivity(0.007);
+//        gearFlipUltra1 = new Ultrasonic(0,1);
+//        LiveWindow.addSensor("Ultra1", "Ultrasonic 1", gearFlipUltra1);
+//        gearFlipUltra2 = new Ultrasonic(0,1);
+//        LiveWindow.addSensor("Ultra2", "Ultrasonic 2", gearFlipUltra2);
+//        gearFlipAnalogGyro1 = new AnalogGyro(0);
+//        LiveWindow.addSensor("Gyroscope", "AnalogGyro 1", gearFlipAnalogGyro1);
+//        gearFlipAnalogGyro1.setSensitivity(0.007);
         
-        shooterSpeedController1 = new Talon(0);
-        LiveWindow.addActuator("Shooter", "Speed Controller 1", (Talon) shooterSpeedController1);
-        shooterSpeedController2 = new Talon(1);
-        LiveWindow.addActuator("Shooter", "Speed Controller 2", (Talon) shooterSpeedController2);
-        shooterUltrasonic1 = new Ultrasonic(0, 1);
-        LiveWindow.addSensor("Ultrasonic", "Ultrasonic 1", shooterUltrasonic1);
-        shooterUltrasonic2 = new Ultrasonic(0, 1);
-        LiveWindow.addSensor("Ultrasonic", "Ultrasonic 2", shooterUltrasonic2);
-        shooterUltrasonic3 = new Ultrasonic(0, 1);
-        LiveWindow.addSensor("Ultrasonic", "Ultrasonic 3", shooterUltrasonic3);
-        shooterUltrasonic4 = new Ultrasonic(0, 1);
-        LiveWindow.addSensor("Ultrasonic", "Ultrasonic 4", shooterUltrasonic4);
-        
-        gateSpeedController1 = new Victor(0);
-        LiveWindow.addActuator("Gate", "Speed Controller 1", (Victor) gateSpeedController1);
-        
-        climberSpark1 = new Spark(1);
-        LiveWindow.addActuator("Climber", "Spark 1", (Spark) climberSpark1);
-        
-        drivetrainSpeedController1 = new Victor(1);
-        LiveWindow.addActuator("Drivetrain", "Speed Controller 1", (Victor) drivetrainSpeedController1);
-        drivetrainSpeedController2 = new Victor(2);
-        LiveWindow.addActuator("Drivetrain", "Speed Controller 2", (Victor) drivetrainSpeedController2);
-        drivetrainSpeedController3 = new Victor(3);
-        LiveWindow.addActuator("Drivetrain", "Speed Controller 3", (Victor) drivetrainSpeedController3);
-        drivetrainSpeedController4 = new Victor(4);
-        LiveWindow.addActuator("Drivetrain", "Speed Controller 4", (Victor) drivetrainSpeedController4);
-      
+//        shooterSpeedController1 = new Talon(0);
+//        LiveWindow.addActuator("Shooter", "Speed Controller 1", (Talon) shooterSpeedController1);
+//        shooterSpeedController2 = new Talon(1);
+//        LiveWindow.addActuator("Shooter", "Speed Controller 2", (Talon) shooterSpeedController2);
+//        shooterUltrasonic1 = new Ultrasonic(0, 1);
+//        LiveWindow.addSensor("Ultrasonic", "Ultrasonic 1", shooterUltrasonic1);
+//        shooterUltrasonic2 = new Ultrasonic(0, 1);
+//        LiveWindow.addSensor("Ultrasonic", "Ultrasonic 2", shooterUltrasonic2);
+//        shooterUltrasonic3 = new Ultrasonic(0, 1);
+//        LiveWindow.addSensor("Ultrasonic", "Ultrasonic 3", shooterUltrasonic3);
+//        shooterUltrasonic4 = new Ultrasonic(0, 1);
+//        LiveWindow.addSensor("Ultrasonic", "Ultrasonic 4", shooterUltrasonic4);
+//        
+//        gateSpeedController1 = new Victor(0);
+//        LiveWindow.addActuator("Gate", "Speed Controller 1", (Victor) gateSpeedController1);
+//        
+//        climberSpark1 = new Spark(1);
+//        LiveWindow.addActuator("Climber", "Spark 1", (Spark) climberSpark1);
+//        
+//        drivetrainSpeedController1 = new Victor(1);
+//        LiveWindow.addActuator("Drivetrain", "Speed Controller 1", (Victor) drivetrainSpeedController1);
+//        drivetrainSpeedController2 = new Victor(2);
+//        LiveWindow.addActuator("Drivetrain", "Speed Controller 2", (Victor) drivetrainSpeedController2);
+//        drivetrainSpeedController3 = new Victor(3);
+//        LiveWindow.addActuator("Drivetrain", "Speed Controller 3", (Victor) drivetrainSpeedController3);
+//        drivetrainSpeedController4 = new Victor(4);
+//        LiveWindow.addActuator("Drivetrain", "Speed Controller 4", (Victor) drivetrainSpeedController4);
+//      
 
     }
 

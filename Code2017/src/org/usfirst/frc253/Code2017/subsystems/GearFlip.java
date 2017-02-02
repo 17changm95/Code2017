@@ -33,6 +33,7 @@ public class GearFlip extends Subsystem {
         	super();
         	 DeployGear();
         	 Retract();
+        	 FullStop();
     	}
     	public void DeployGear(){
     		spark1.set(0.8);
