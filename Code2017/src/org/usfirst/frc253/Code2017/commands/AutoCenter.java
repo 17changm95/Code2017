@@ -49,13 +49,14 @@ public class AutoCenter extends Command {
     	}
     	myTimer.stop();
     	myTimer.reset();
-    	new GearAutoCorrect();
+//    	new GearAutoCorrect();
     	myTimer.start();
     	if(myTimer.get() < 0.5){
     		new DeployGear();
     	} else if(myTimer.get() < 1.0){
     		new Retract();
     	}
+    	end();
     }
 
     // Make this return true when this Command no longer needs to run execute()

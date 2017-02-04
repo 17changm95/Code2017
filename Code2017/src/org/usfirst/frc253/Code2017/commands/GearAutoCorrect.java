@@ -11,28 +11,16 @@
 
 package org.usfirst.frc253.Code2017.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc253.Code2017.Robot;
-
-import edu.wpi.first.wpilibj.Ultrasonic;
 /**
  *
  */
-public class GearAutoCorrect extends Ultrasonic1 {
+public class GearAutoCorrect extends SensorData {
 
-    public GearAutoCorrect(Ultrasonic ultra1, Ultrasonic ultra2) {
+    public GearAutoCorrect() {
     	super();
     	requires(Robot.drivetraintank);
-    	this.ultra1 = ultra1;
-    	this.ultra2 = ultra2;
-    	//copied from org.usfirst.frc253.Code2016.commands.UltraSound2
-//    	ultra1 = new Ultrasonic(0,1); //arbitrary arguments for now
-//    	ultra1.setAutomaticMode(true);
-//    	ultra2 = new Ultrasonic(5,6);
-//    	ultra2.setAutomaticMode(true);
-    	
     }
 
     // Called just before this Command runs the first time
@@ -41,26 +29,51 @@ public class GearAutoCorrect extends Ultrasonic1 {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double rangeLeft = ultraLeft.getRangeInches();
+    	double rangeRight = ultraRight.getRangeInches();
+    	boolean isGearAligned = photo.get();
+    	boolean isRobotAligned = false;
+    	SmartDashboard.putBoolean("Is the robot aligned?", isRobotAligned);
+    	SmartDashboard.putBoolean("Is the gear vertically aligned?", isGearAligned);
     	
-    	double range1 = ultra1.getRangeInches();
-    	double range2 = ultra2.getRangeInches();
-    	boolean isAligned = false;
-    	SmartDashboard.putBoolean("Is the gear aligned?", isAligned);
     	
-    	if(Math.abs(range1 - range2) < 3.0){
-    		isAligned = true;
-    		Robot.drivetraintank.setLeft_Back(0);
-	    	Robot.drivetraintank.setLeft(0);
-    		Robot.drivetraintank.setRight(0);
-	    	Robot.drivetraintank.setRight_Back(0);
-    	} else {
-    		isAligned = false;
-    		if(range1 > range2){
-    			Robot.drivetraintank.setLeft_Back(.5);
-        	    Robot.drivetraintank.setLeft(.5);
+    	
+    	if(isGearAligned == false){
+    		if(Math.abs(rangeLeft - rangeRight) < 3.0){
+    			isRobotAligned = true;
+    			end();
     		} else {
-        	    Robot.drivetraintank.setRight(.5);
-        	    Robot.drivetraintank.setRight_Back(.5);
+    			isRobotAligned = false;
+    			if(rangeLeft > rangeRight){
+    				Robot.drivetraintank.setLeft_Back(.5);
+        	    	Robot.drivetraintank.setLeft(.5);
+    			} else {
+        	    	Robot.drivetraintank.setRight(.5);
+        	    	Robot.drivetraintank.setRight_Back(.5);
+    			}
+    		}
+    	} else {
+    		if(Math.abs(rangeLeft - rangeRight) < 5.0 && Math.abs(rangeLeft - rangeRight) > 3.0){
+    			isRobotAligned = true;
+    			end();
+    		} else {
+    			if(rangeLeft > rangeRight){
+    				if(Math.abs(rangeLeft - rangeRight) > 5.0){
+    					Robot.drivetraintank.setLeft_Back(.5);
+            	    	Robot.drivetraintank.setLeft(.5);
+    				} else {
+    					Robot.drivetraintank.setRight(.5);
+            	    	Robot.drivetraintank.setRight_Back(.5);
+    				}
+    			} else {
+    				if(Math.abs(rangeLeft - rangeRight) > 5.0){
+    					Robot.drivetraintank.setRight(.5);
+            	    	Robot.drivetraintank.setRight_Back(.5);
+    				} else {
+    					Robot.drivetraintank.setLeft_Back(.5);
+            	    	Robot.drivetraintank.setLeft(.5);
+    				}
+    			}
     		}
     	}
     }
