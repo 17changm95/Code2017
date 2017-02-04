@@ -1,7 +1,6 @@
 package org.usfirst.frc253.Code2017.subsystems;
 
 import java.lang.Math;
-
 import org.usfirst.frc253.Code2017.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -26,21 +25,21 @@ public class TankDrive extends Command {
     	double rightSpeed = Robot.oi.getRightJoystick().getY();
     	
     	//Joystick anti-drift
-    	if(Math.abs(leftSpeed) > .125)
+    	if(Math.abs(leftSpeed) > .125*.6)
     		Robot.drivetraintank.setLeft(leftSpeed);
     	else
-    		Robot.drivetraintank.setLeft(-.1);
+    		Robot.drivetraintank.setLeft(0);
     	
-    	if(Math.abs(rightSpeed) > .125)
+    	if(Math.abs(rightSpeed) > .125*.6)
     		Robot.drivetraintank.setRight(rightSpeed);
     	else
     		Robot.drivetraintank.setRight(0);
-    	if(Math.abs(leftSpeed) > .125)
+    	if(Math.abs(leftSpeed) > .125*.6)
     		Robot.drivetraintank.setLeft_Back(leftSpeed);
     	else
-    		Robot.drivetraintank.setLeft_Back(0.1);
+    		Robot.drivetraintank.setLeft_Back(0);
     	
-    	if(Math.abs(rightSpeed) > .125)
+    	if(Math.abs(rightSpeed) > .125*.6)
     		Robot.drivetraintank.setRight_Back(rightSpeed);
     	else
     		Robot.drivetraintank.setRight_Back(0);

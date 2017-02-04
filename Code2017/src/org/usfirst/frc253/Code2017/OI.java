@@ -12,6 +12,7 @@
 package org.usfirst.frc253.Code2017;
 
 import org.usfirst.frc253.Code2017.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
 
@@ -72,9 +73,6 @@ public class OI {
 
         rightJoystick = new Joystick(1);
         leftJoystick = new Joystick(0);
-        
-        SensorData = new JoystickButton(rightJoystick, 11);
-        SensorData.whenPressed(new SensorData());
 
         StraightDrive = new JoystickButton(leftJoystick, 6);
         StraightDrive.whileHeld(new StraightDrive());
@@ -85,17 +83,17 @@ public class OI {
         DeployGear = new JoystickButton(rightJoystick, 1);
         DeployGear.whileHeld(new DeployGear());
         
-        Retract = new JoystickButton(rightJoystick, 2); //reassign button value later
+        Retract = new JoystickButton(rightJoystick, 2);
         Retract.whileHeld(new Retract());
         
         GearAutoCorrect = new JoystickButton(rightJoystick, 3);
         GearAutoCorrect.whileHeld(new GearAutoCorrect());
         
-//        ServoSpinForward = new JoystickButton(leftJoystick, 8);
-//        ServoSpinForward.whileHeld(new ServoSpinForward());
-//        
-//        ServoSpinBackward = new JoystickButton(leftJoystick, 9);
-//        ServoSpinBackward.whileHeld(new ServoSpinBackward());
+        ServoSpinForward = new JoystickButton(leftJoystick, 8);
+        ServoSpinForward.whileHeld(new ServoSpinForward());
+        
+        ServoSpinBackward = new JoystickButton(leftJoystick, 9);
+        ServoSpinBackward.whileHeld(new ServoSpinBackward());
         
 //        ShooterAutoCorrect = new JoystickButton(rightJoystick, 2);
 //        ShooterAutoCorrect.whileHeld(new ShooterAutoCorrect());

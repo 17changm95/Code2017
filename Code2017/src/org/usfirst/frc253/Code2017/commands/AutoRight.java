@@ -11,12 +11,12 @@
 
 package org.usfirst.frc253.Code2017.commands;
 import org.usfirst.frc253.Code2017.Robot;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class AutoRight extends SensorData {
+public class AutoRight extends Command {
 
     public AutoRight() {
     	super();
@@ -29,38 +29,7 @@ public class AutoRight extends SensorData {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double gyroAngle = gyro1.getAngle();
-    	Timer myTimer = new Timer();
-    	
-    	myTimer.start();
-    	if(myTimer.get() < 2.5){
-    		new StraightDrive();
-    	}
-    	myTimer.stop();
-    	myTimer.reset();
-    	
-    	while(gyroAngle < -45){ //might be 45
-    		new SpinCounterwise();
-    	}
-    	
-    	myTimer.start();
-    	if(myTimer.get() < 1.0){
-    		new StraightDrive();
-    	}
-    	myTimer.stop();
-    	myTimer.reset();
-    	
-//    	new GearAutoCorrect(); //may or may not use
-    	
-    	myTimer.start();
-    	if(myTimer.get() < 0.5){
-    		new DeployGear();
-    	} else if(myTimer.get() < 1.0){
-    		new Retract();
-    	}
-    	myTimer.stop();
-    	myTimer.reset();
-    	end();
+    	Robot.sensorData.AutoGyroRight();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -70,11 +39,7 @@ public class AutoRight extends SensorData {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drivetraintank.setLeft_Back(0);
-    	Robot.drivetraintank.setLeft(0);
-    	Robot.drivetraintank.setRight(0);
-    	Robot.drivetraintank.setRight_Back(0);
-    	Robot.gearFlip.FullStop();
+    	Robot.sensorData.AutoStop();
     }
 
     // Called when another command which requires one or more of the same

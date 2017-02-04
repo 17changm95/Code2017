@@ -11,16 +11,16 @@
 
 package org.usfirst.frc253.Code2017.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc253.Code2017.Robot;
 /**
  *
  */
-public class GearAutoCorrect extends SensorData {
+public class GearAutoCorrect extends Command {
 
     public GearAutoCorrect() {
     	super();
-    	requires(Robot.drivetraintank);
+    	requires(Robot.sensorData);
     }
 
     // Called just before this Command runs the first time
@@ -29,53 +29,7 @@ public class GearAutoCorrect extends SensorData {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double rangeLeft = ultraLeft.getRangeInches();
-    	double rangeRight = ultraRight.getRangeInches();
-    	boolean isGearAligned = photo.get();
-    	boolean isRobotAligned = false;
-    	SmartDashboard.putBoolean("Is the robot aligned?", isRobotAligned);
-    	SmartDashboard.putBoolean("Is the gear vertically aligned?", isGearAligned);
-    	
-    	
-    	
-    	if(isGearAligned == false){
-    		if(Math.abs(rangeLeft - rangeRight) < 3.0){
-    			isRobotAligned = true;
-    			end();
-    		} else {
-    			isRobotAligned = false;
-    			if(rangeLeft > rangeRight){
-    				Robot.drivetraintank.setLeft_Back(.5);
-        	    	Robot.drivetraintank.setLeft(.5);
-    			} else {
-        	    	Robot.drivetraintank.setRight(.5);
-        	    	Robot.drivetraintank.setRight_Back(.5);
-    			}
-    		}
-    	} else {
-    		if(Math.abs(rangeLeft - rangeRight) < 5.0 && Math.abs(rangeLeft - rangeRight) > 3.0){
-    			isRobotAligned = true;
-    			end();
-    		} else {
-    			if(rangeLeft > rangeRight){
-    				if(Math.abs(rangeLeft - rangeRight) > 5.0){
-    					Robot.drivetraintank.setLeft_Back(.5);
-            	    	Robot.drivetraintank.setLeft(.5);
-    				} else {
-    					Robot.drivetraintank.setRight(.5);
-            	    	Robot.drivetraintank.setRight_Back(.5);
-    				}
-    			} else {
-    				if(Math.abs(rangeLeft - rangeRight) > 5.0){
-    					Robot.drivetraintank.setRight(.5);
-            	    	Robot.drivetraintank.setRight_Back(.5);
-    				} else {
-    					Robot.drivetraintank.setLeft_Back(.5);
-            	    	Robot.drivetraintank.setLeft(.5);
-    				}
-    			}
-    		}
-    	}
+    	Robot.sensorData.GearAutoCorrect();
     }
 
     // Make this return true when this Command no longer needs to run execute()

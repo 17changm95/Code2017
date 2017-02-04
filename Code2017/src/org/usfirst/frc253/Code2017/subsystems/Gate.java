@@ -11,9 +11,6 @@
 
 package org.usfirst.frc253.Code2017.subsystems;
 
-import org.usfirst.frc253.Code2017.RobotMap;
-import edu.wpi.first.wpilibj.SpeedController;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
