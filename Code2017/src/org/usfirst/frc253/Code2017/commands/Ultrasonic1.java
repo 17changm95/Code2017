@@ -22,7 +22,7 @@ public class Ultrasonic1 extends Command {
     public Ultrasonic1() {
 //    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
     	ultra1 = new Ultrasonic(0,1);
-    	ultra2 = new Ultrasonic(2,3);
+    	ultra2 = new Ultrasonic(5,6);
     	ultra1.setAutomaticMode(true);
     	ultra2.setAutomaticMode(true);
     	

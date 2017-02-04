@@ -35,10 +35,10 @@ public class GearFlip extends Subsystem {
         	 Retract();
     	}
     	public void DeployGear(){
-    		spark1.set(0.8);
+    		spark1.set(0.5);
     	}
     	public void Retract(){
-    		spark1.set(-0.5);
+    		spark1.set(-0.7);
     	}
     	public void FullStop(){
     		spark1.set(0);
